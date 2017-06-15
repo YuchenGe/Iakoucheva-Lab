@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- saved from url=(0303)https://www.iossifovlab.com/gpf/#!/whole_exome?genes=Gene%20Symbols&effectTypes=Frame-shift,Nonsense,Splice-site&phenoType=autism,congenital%20heart%20disease,epilepsy,intelectual%20disability,schizophrenia,unaffected&gender=female,male&variantTypes=del,ins,sub&studyType=TG,WE&gene_set_phenotype=autism -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+    <title>Iakoucheva Lab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../static/MasterFile/css" type="text/css">
+    <link rel="stylesheet" href="../../static/MasterFile/bootstrap.css">
+    <link rel="stylesheet" href="../../static/MasterFile/table-fixed-header.css">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../../static/MasterFile/select.css">
+    <!-- endbower -->
+    <link rel="stylesheet" href="../../static/MasterFile/jquery-ui.css">
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="../../static/MasterFile/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="variantsAngularApp" style="" class="ng-scope">
+    <!--[if lte IE 8]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!-- uiView:  -->
+	<div data-ui-view="" class="ng-scope"><div class="ng-scope"><!-- class="container-fluid no-padding"-->
+	<!-- Cannot read property 'runner' of undefined in Chromium
+		fixed in angularjs 1.4.0-rc.2 (https://github.com/angular/angular.js/pull/11760)-->
+	<img src="../../static/MasterFile/UCSD.png" alt="" />
+	University of California - San Diego, Department of Psychiatry <br>
+	GPF: Genotype and Phenotype in Families <br>
+	Iakoucheva Lab <br>
+		
+	<form name="wholeExomeForm" class="ng-pristine ng-invalid ng-invalid-vtvalidationtextbox ng-valid-vtvalidationcheckboxes" style="">
+		<fieldset>
+		<!-- ngIf: vtGeneSelection.genes === GENES_SYMBOLS --><div data-ng-if="vtGeneSelection.genes === GENES_SYMBOLS" class="row-fluid genes-holder ng-scope">
+		<label class="control-label ng-binding" for="geneSyms">Gene Symbols</label>
+		<fieldset>
+	<textarea data-vt-validation-textbox="vtGeneSelection.geneSyms" id="geneSyms" style="resize:none;" type="text" name="geneSyms" rows="2" class="span12 ng-pristine ng-untouched ng-invalid ng-invalid-vtvalidationtextbox error" data-ng-class="{&#39;error&#39;: symbolsForm.$invalid}" data-ng-model="vtGeneSelection.geneSyms">	</textarea>
+      </fieldset>
+			
+			<div class="row-fluid">
+				<input data-vt-validation-button="" data-ng-click="wholeExomeCtrl.chromes()" value="Graphical View" type="button" id="chromsBtn" class="btn btn-large span2">
+			</div>
+		</fieldset>
+	</form>
+	</div></div>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
+ 
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+
+	<script type="text/javascript" class="init"> 
+$(document).ready(function() {
+    var table = $('#MasterTable').DataTable( {
+        "ajax": '../../static/data.txt',
+		"dom": 'Bfrtip',
+ 		"buttons": [
+			'csv', 'excel'
+		]
+	});
+} );
+	</script>
+
+	<script type="text/javascript" class="init">
+$(document).ready(function() {
+	// Setup - add a text input to each footer cell
+	$('#MasterTable tfoot th').each( function () {
+		var title = $(this).text();
+		$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+	} );
+
+	// DataTable
+	var table = $('#MasterTable').DataTable();
+
+	// Apply the search
+	table.columns().every( function () {
+		var that = this;
+
+		$( 'input', this.footer() ).on( 'keyup change', function () {
+			if ( that.search() !== this.value ) {
+				that
+					.search( this.value )
+					.draw();
+			}
+		} );
+	} );
+} );
+	</script>
+
+</head>
+<body class="content">
+<table id="MasterTable" class="display" width="100%">
+        <thead>
+            <tr>
+                <th>#entrez gene ID</th>
+                <th>Gene_symbol</th>
+				<th>Disorder</th>
+				<th>First_author</th>
+				<th>Last_author</th>
+                <th>Mutation_location</th>
+                <th>Mutation_function</th>
+                <th>Individual/Family_ID</th>
+                <th>Chromosome</th>
+				<th>Position(hg19) start</th>
+				<th>Position(hg19) end</th>
+				<th>Reference_allele</th>
+				<th>Mutant_allele</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+	            <th>#entrez gene ID</th>
+                <th>Gene_symbol</th>
+				<th>Disorder</th>
+				<th>First_author</th>
+				<th>Last_author</th>
+                <th>Mutation_location</th>
+                <th>Mutation_function</th>
+                <th>Individual/Family_ID</th>
+                <th>Chromosome</th>
+				<th>Position(hg19) start</th>
+				<th>Position(hg19) end</th>
+				<th>Reference_allele</th>
+				<th>Mutant_allele</th>
+            </tr>
+        </tfoot>
+    </table>
+
+</body></html>
