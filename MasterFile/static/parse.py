@@ -1,8 +1,8 @@
 import csv
 import json
 
-tsvfile = open('MasterFile.txt', 'r', encoding='utf16')
-jsonfile = open('data.txt', 'w', encoding='utf16')
+tsvfile = open('MasterTable.txt', 'r', encoding='utf16')
+jsonfile = open('data_table_1.txt', 'w', encoding='utf16')
 
 final_list = []
 
