@@ -12,10 +12,10 @@
 
 <div class="container">
   <h2>Tables</h2>
-  <a href="/table1" class="btn btn-info" role="button">Table 1</a>
-  <a href="/table2" class="btn btn-info" role="button">Table 2 </a>
-  <a href="/table3" class="btn btn-info" role="button">Table 3</a>
-  <a href="/table4" class="btn btn-info" role="button">Table 4</a>
+  <a href="/MasterFile/table1" class="btn btn-info" role="button">De Novo Mutation</a>
+  <a href="/MasterFile/table2" class="btn btn-info" role="button">Gene Level Summary</a>
+  <a href="/MasterFile/table3" class="btn btn-info" role="button">BrainSpan (Coming Soon...)</a>
+  <a href="/MasterFile/table4" class="btn btn-info" role="button">PCC (Coming Soon...)</a>
 </div>
 
 </body>

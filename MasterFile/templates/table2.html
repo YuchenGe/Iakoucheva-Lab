@@ -2,7 +2,7 @@
 <!-- https://datatables.net/examples/data_sources/js_array.html -->
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>DataTable 2</title>
+	<title>Gene Level Summary</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,8 +19,11 @@ $(document).ready(function() {
  		"buttons": [
 			'csv', 'excel'
 		],
+		"columnDefs": [
+			{"className": "dt-center", "targets": "_all"}
+		],
 		"initComplete": function () {
-            this.api().columns([4,5,6,7,8]).every( function () {
+            this.api().columns([2,3]).every( function () {
                 var column = this;
                 var select = $('<select><option value=""></option></select>')
                     .appendTo( $(column.footer()).empty() )
@@ -55,7 +58,7 @@ $(document).ready(function() {
 	var table = $('#table').DataTable();
 
 	// Apply the search
-	table.columns([0,1,2,3]).every( function () {
+	table.columns([0,1]).every( function () {
 		var that = this;
 
 		$( 'input', this.footer() ).on( 'keyup change', function () {
@@ -72,31 +75,22 @@ $(document).ready(function() {
 
 </head>
 <body class="content">
+<h1>Gene Level Summary</h1>
 <table id="table" class="display" width="100%">
         <thead>
             <tr>
-				<th>Team</th>
-                <th>ID</th>
-                <th>Blast Hits</th>
-                <th>Pfam</th>
-                <th>Prosite</th>
-                <th>KEGG Pathway</th>
-                <th>GO</th>
-				<th>GO-slim</th>
-				<th>Comment</th>
+				<th>#entrez gene ID</th>
+                <th>Gene_symbol</th>
+                <th>DNM_count</th>
+                <th>LOF_count</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-				<th>Team</th>
-				<th>ID</th>
-                <th>Blast Hits</th>
-                <th>Pfam</th>
-                <th>Prosite</th>
-                <th>KEGG Pathway</th>
-                <th>GO</th>
-				<th>GO-slim</th>
-				<th>Comment</th>
+				<th>#entrez gene ID</th>
+                <th>Gene_symbol</th>
+                <th>DNM_count</th>
+                <th>LOF_count</th>
             </tr>
         </tfoot>
     </table>

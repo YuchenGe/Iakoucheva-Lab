@@ -1,22 +1,41 @@
 import csv
 import json
 
-tsvfile = open('MasterFile.txt', 'r', encoding='utf16')
-jsonfile = open('data.txt', 'w', encoding='utf16')
+tsvfile1 = open('De Novo Mutations.txt', 'r')
+tsvfile2 = open('Gene Level Summary.txt', 'r')
 
-final_list = []
+jsonfile1 = open('data_table_1.txt', 'w')
+jsonfile2 = open('data_table_2.txt', 'w')
 
-Dict = {}
+final_list1 = []
 
-reader = csv.reader(tsvfile, delimiter='\t')
+Dict1 = {}
+
+reader = csv.reader(tsvfile1, delimiter='\t')
 next(reader)
 
 for row in reader:
-	final_list.append(row)
+	final_list1.append(row)
 
-Dict["data"] = final_list
+Dict1["data"] = final_list1
 
-json.dump(Dict,jsonfile)
+json.dump(Dict1,jsonfile1)
 
-tsvfile.close()
-jsonfile.close()
+final_list2 = []
+
+Dict2 = {}
+
+reader = csv.reader(tsvfile2, delimiter='\t')
+next(reader)
+
+for row in reader:
+	final_list2.append(row)
+
+Dict2["data"] = final_list2
+
+json.dump(Dict2,jsonfile2)
+
+tsvfile1.close()
+tsvfile2.close()
+jsonfile1.close()
+jsonfile2.close()

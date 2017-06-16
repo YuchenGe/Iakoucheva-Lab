@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['127.0.0.1','100.80.182.124','localhost']
 INSTALLED_APPS = [
 	'polls.apps.PollsConfig',
 	'MasterFile.apps.MasterfileConfig',
-	'rip.apps.RipConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
